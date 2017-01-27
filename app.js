@@ -14,8 +14,9 @@ app.use(parser.json());
 app.use(express.static('public'));
 app.use(routes);
 
+
 nunjucks.configure('views', {noCache: true});
-app.set('view engine', 'html')
+app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
 
 app.use(function(req, res, next) {
@@ -30,6 +31,12 @@ app.use(function(err, req, res, next) {
   console.error(err);
   res.render('error');
 });
+
+
+// nunjucks.render('index.html', locals, function (err, output) {
+//     console.log(err, output);
+// });
+
 
 app.listen(3000, function() {
   console.log('listening on port 3000');
